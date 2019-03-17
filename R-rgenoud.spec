@@ -4,15 +4,20 @@
 #
 Name     : R-rgenoud
 Version  : 5.8.3.0
-Release  : 16
+Release  : 17
 URL      : https://cran.r-project.org/src/contrib/rgenoud_5.8-3.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/rgenoud_5.8-3.0.tar.gz
 Summary  : R Version of GENetic Optimization Using Derivatives
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: R-rgenoud-lib = %{version}-%{release}
-Requires: R-rlang
+Requires: R-assertthat
+Requires: R-cli
+Requires: R-withr
+BuildRequires : R-assertthat
+BuildRequires : R-cli
 BuildRequires : R-rlang
+BuildRequires : R-withr
 BuildRequires : buildreq-R
 
 %description
@@ -35,10 +40,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548386545
+export SOURCE_DATE_EPOCH=1552845274
 
 %install
-export SOURCE_DATE_EPOCH=1548386545
+export SOURCE_DATE_EPOCH=1552845274
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -74,8 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library rgenoud|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  rgenoud || :
 
 
 %files
@@ -106,7 +110,12 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/rgenoud/help/rgenoud.rdx
 /usr/lib64/R/library/rgenoud/html/00Index.html
 /usr/lib64/R/library/rgenoud/html/R.css
-/usr/lib64/R/library/rgenoud/libs/symbols.rds
+/usr/lib64/R/library/rgenoud/tests/tests.R
+/usr/lib64/R/library/rgenoud/tests/tests.Rout.save
+/usr/lib64/R/library/rgenoud/tests/testthat.R
+/usr/lib64/R/library/rgenoud/tests/testthat/test-Example.R
+/usr/lib64/R/library/rgenoud/tests/testthat/test-genoud_fixed_seed.R
+/usr/lib64/R/library/rgenoud/tests/testthat/test-genoud_no_given_seed.R
 
 %files lib
 %defattr(-,root,root,-)
