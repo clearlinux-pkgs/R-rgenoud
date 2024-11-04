@@ -7,7 +7,7 @@
 #
 Name     : R-rgenoud
 Version  : 5.9.0.11
-Release  : 54
+Release  : 55
 URL      : https://cran.r-project.org/src/contrib/rgenoud_5.9-0.11.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/rgenoud_5.9-0.11.tar.gz
 Summary  : R Version of GENetic Optimization Using Derivatives
